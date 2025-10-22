@@ -1,0 +1,30 @@
+Set WShell = CreateObject("WScript.Shell")
+Set FSO = CreateObject("Scripting.FileSystemObject")
+
+' Get command-line arguments
+Dim exeCommand, downloadsFolder
+exeCommand = WScript.Arguments(0)
+downloadsFolder = WScript.Arguments(1)
+
+' Start the executable and get its process ID
+Set exec = WShell.Exec(exeCommand)
+Dim pid
+pid = exec.ProcessID
+
+' Wait for the process to terminate
+Do While exec.Status = 0
+    WScript.Sleep 1000 ' Check every second
+Loop
+
+' Delete all files and subfolders in the downloads folder
+If FSO.FolderExists(downloadsFolder) Then
+    Set Folder = FSO.GetFolder(downloadsFolder)
+    For Each File In Folder.Files
+        On Error Resume Next
+        FSO.DeleteFile File.Path, True
+    Next
+    For Each SubFolder In Folder.SubFolders
+        On Error Resume Next
+        FSO.DeleteFolder SubFolder.Path, True
+    Next
+End If

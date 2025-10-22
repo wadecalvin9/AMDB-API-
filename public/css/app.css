@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 5px;
+    width: 250px;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 10px;
+}
+
+.movie-details img {
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.movie-details a {
+    text-decoration: none;
+    color: blue;
+}
+
+.movie-details ul {
+    padding-left: 20px;
+}
+
+.error {
+    color: red;
+}

@@ -1,0 +1,32 @@
+
+    public function play(Request $request)
+    {
+        $magnet = $request->query('magnet');
+        // Validate magnet link
+        if (!$magnet || !str_starts_with($magnet, 'magnet:?')) {
+            Log::error('Invalid magnet link provided: ' . $magnet);
+            return response()->json(['error' => 'Invalid magnet link'], 400);
+        }
+        $executablePath = config('stream.executable_path', base_path('resources/bin/webtorrent-runner.exe'));
+        $vbScriptPath = base_path('resources/scripts/run_hidden.vbs');
+        // Check if executable exists
+        if (!file_exists($executablePath)) {
+            Log::error('WebTorrent executable not found: ' . $executablePath);
+            return response()->json(['error' => 'WebTorrent executable not found'], 500);
+        } // Check if VBScript exists
+        if (!file_exists($vbScriptPath)) {
+            Log::error('VBScript not found: ' . $vbScriptPath);
+            return response()->json(['error' => 'VBScript not found'], 500);
+        }
+        $escapedMagnet = escapeshellarg($magnet);
+        $logFile = config('stream.log_file', storage_path('logs/stream.log')); // Run the executable via VBScript to hide the window
+        $command = "wscript \"{$vbScriptPath}\" \"{$executablePath} {$escapedMagnet}\"";
+        try {
+            pclose(popen($command, 'r'));
+            Log::info('WebTorrent started successfully in background: ' . $magnet);
+            return response()->json(['status' => '🎬 Stream started successfully!', 'stream_url' => 'http://localhost:8888']);
+        } catch (\Throwable $e) {
+            Log::error('Error starting stream: ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to start stream'], 500);
+        }
+    }
