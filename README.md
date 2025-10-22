@@ -30,7 +30,7 @@ A Laravel-based **Movies & Series API** that provides endpoints to fetch, search
 1. **Clone the repo**
 
    ```bash
-   git clone https://github.com/yourusername/amdb-api.git
+   git clone https://github.com/wadecalvin9/AMDB-API-.git
    cd amdb-api
    ```
 
@@ -91,34 +91,11 @@ Use Laravel **Sanctum** tokens to access protected routes:
 curl -H "Authorization: Bearer YOUR_TOKEN" http://127.0.0.1:8000/api/movies
 ```
 
----
-
-## 🧰 Development Notes
-
-* Keep your `.env` file secure.
-* Use Postman for API testing.
-* Run `php artisan tinker` for database debugging.
-* Configure `storage:link` to make posters and images public.
-
----
-
-## 📦 API Documentation
-
-If enabled via Swagger:
-
-```
-http://127.0.0.1:8000/api/docs
-```
-
-Or export a Postman collection from `docs/postman_collection.json`.
-
----
-
 ## 🧑‍💻 Author
 
 **Wade Calvin**
 📧 [your.email@example.com](mailto:wadecalvin9@gmail.com)
-🐙 [GitHub](https://github.com/yourusername)
+🐙 [GitHub](https://github.com/wadecalvin9)
 
 ---
 
