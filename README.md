@@ -11,7 +11,7 @@ A Laravel-based **Movies & Series API** that provides endpoints to fetch, search
 * 🧾 Fetch detailed info (cast, release year, ratings, etc.)
 * 🧠 RESTful API architecture
 * 🗄️ Laravel Eloquent ORM for clean database handling
-* 🔐 API token authentication (Laravel Sanctum)
+* 🔐 API token authentication (Laravel Sanctum) -> on Laravel 11+ install api via the laravel sunctum docs
 
 ---
 
