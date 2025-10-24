@@ -1,4 +1,4 @@
-# 🎬 AMDB-API
+# 🎬 AMDB API
 
 A Laravel-based **Movies & Series API** that provides endpoints to fetch, search, and manage movie and TV show data. Designed to power your frontend apps or public movie listing platforms.
 
